@@ -24,7 +24,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln
       - name: Build
-        run: dotnet build ./src/CSharp/EasyMicroservices.WhiteLabelsMicroservice.Client.sln --no-restore
+        run: dotnet build ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln --no-restore
       - name: Test
         run:  |
           dotnet test ./src/CSharp/EasyMicroservices.WhiteLabelsMicroservice.Client.sln --no-build --verbosity normal -f netcoreapp3.1
