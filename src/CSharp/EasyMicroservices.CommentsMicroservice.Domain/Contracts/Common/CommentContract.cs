@@ -13,7 +13,7 @@ namespace EasyMicroservices.CommentsMicroservice.Contracts.Common
         public string Text { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
-        public DateTime CreationTime { get; set; }
-        public DateTime ModifiationTime { get; set; }
+        public DateTime CreationDateTime { get; set; }
+        public DateTime ModifiationDateTime { get; set; }
     }
 }

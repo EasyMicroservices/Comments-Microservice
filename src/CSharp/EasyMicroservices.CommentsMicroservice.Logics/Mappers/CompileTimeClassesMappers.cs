@@ -22,8 +22,8 @@ namespace CompileTimeMapper
                 Text = fromObject.Text,
                 Email = fromObject.Email,
                 Website = fromObject.Website,
-                CreationTime = fromObject.CreationTime,
-                ModifiationTime = fromObject.ModifiationTime,
+                CreationDateTime = fromObject.CreationDateTime,
+                ModifiationDateTime = fromObject.ModifiationDateTime,
             };
             return mapped;
         }
@@ -37,8 +37,8 @@ namespace CompileTimeMapper
                 Text = fromObject.Text,
                 Email = fromObject.Email,
                 Website = fromObject.Website,
-                CreationTime = fromObject.CreationTime,
-                ModifiationTime = fromObject.ModifiationTime,
+                CreationDateTime = fromObject.CreationDateTime,
+                ModifiationDateTime = fromObject.ModifiationDateTime,
             };
             return mapped;
         }
@@ -53,8 +53,8 @@ namespace CompileTimeMapper
                 Text = fromObject.Text,
                 Email = fromObject.Email,
                 Website = fromObject.Website,
-                CreationTime = fromObject.CreationTime,
-                ModifiationTime = fromObject.ModifiationTime,
+                CreationDateTime = fromObject.CreationDateTime,
+                ModifiationDateTime = fromObject.ModifiationDateTime,
             };
             return mapped;
         }
@@ -69,8 +69,8 @@ namespace CompileTimeMapper
                 Text = fromObject.Text,
                 Email = fromObject.Email,
                 Website = fromObject.Website,
-                CreationTime = fromObject.CreationTime,
-                ModifiationTime = fromObject.ModifiationTime,
+                CreationDateTime = fromObject.CreationDateTime,
+                ModifiationDateTime = fromObject.ModifiationDateTime,
             };
             return mapped;
         }
