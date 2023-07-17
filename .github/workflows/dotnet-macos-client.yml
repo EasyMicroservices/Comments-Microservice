@@ -29,4 +29,4 @@ jobs:
         run:  |
           dotnet test ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln --no-build --verbosity normal -f netcoreapp3.1
           dotnet test ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln --no-build --verbosity normal -f net6.0
-          dotnet test ./src/CSharp/EasyMicroservices.WhiteLabelsMicroservice.Client.sln --no-build --verbosity normal -f net5.0
+          dotnet test ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln --no-build --verbosity normal -f net5.0
