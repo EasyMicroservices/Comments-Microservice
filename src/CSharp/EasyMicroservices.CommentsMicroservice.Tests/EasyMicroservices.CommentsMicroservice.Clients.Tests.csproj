@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyMicroservices.WhiteLabelsMicroservice.Clients\EasyMicroservices.WhiteLabelsMicroservice.Clients.csproj" />
+    <ProjectReference Include="..\EasyMicroservices.CommentesMicroservice.Clients\EasyMicroservices.CommentesMicroservice.Clients.csproj" />
   </ItemGroup>
 
 </Project>

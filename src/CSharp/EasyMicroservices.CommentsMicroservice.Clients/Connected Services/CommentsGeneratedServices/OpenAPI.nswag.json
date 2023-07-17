@@ -1,7 +1,7 @@
 ﻿{
   "openapi": "3.0.1",
   "info": {
-    "title": "EasyMicroservices.WhiteLabelsMicroservice.WebApi",
+    "title": "EasyMicroservices.CommentesMicroservice.WebApi",
     "version": "1.0"
   },
   "paths": {
@@ -647,10 +647,10 @@
         }
       }
     },
-    "/api/WhiteLabel/GetById": {
+    "/api/Comment/GetById": {
       "get": {
         "tags": [
-          "WhiteLabel"
+          "Comment"
         ],
         "operationId": "GetById4",
         "parameters": [
@@ -669,17 +669,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               }
             }
@@ -687,27 +687,27 @@
         }
       }
     },
-    "/api/WhiteLabel/Add": {
+    "/api/Comment/Add": {
       "post": {
         "tags": [
-          "WhiteLabel"
+          "Comment"
         ],
         "operationId": "Add4",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WhiteLabelContract"
+                "$ref": "#/components/schemas/CommentContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/WhiteLabelContract"
+                "$ref": "#/components/schemas/CommentContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/WhiteLabelContract"
+                "$ref": "#/components/schemas/CommentContract"
               }
             }
           }
@@ -736,27 +736,27 @@
         }
       }
     },
-    "/api/WhiteLabel/Update": {
+    "/api/Comment/Update": {
       "post": {
         "tags": [
-          "WhiteLabel"
+          "Comment"
         ],
         "operationId": "Update4",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WhiteLabelContract"
+                "$ref": "#/components/schemas/CommentContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/WhiteLabelContract"
+                "$ref": "#/components/schemas/CommentContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/WhiteLabelContract"
+                "$ref": "#/components/schemas/CommentContract"
               }
             }
           }
@@ -767,17 +767,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               }
             }
@@ -785,10 +785,10 @@
         }
       }
     },
-    "/api/WhiteLabel/HardDeleteById": {
+    "/api/Comment/HardDeleteById": {
       "post": {
         "tags": [
-          "WhiteLabel"
+          "Comment"
         ],
         "operationId": "HardDeleteById4",
         "parameters": [
@@ -807,17 +807,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractMessageContract"
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
                 }
               }
             }
@@ -825,10 +825,10 @@
         }
       }
     },
-    "/api/WhiteLabel/GetAll": {
+    "/api/Comment/GetAll": {
       "get": {
         "tags": [
-          "WhiteLabel"
+          "Comment"
         ],
         "operationId": "GetAll4",
         "responses": {
@@ -837,17 +837,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractListMessageContract"
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractListMessageContract"
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WhiteLabelContractListMessageContract"
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
                 }
               }
             }
@@ -1133,7 +1133,7 @@
           }
         }
       },
-      "WhiteLabelContract": {
+      "CommentContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -1157,7 +1157,7 @@
           }
         }
       },
-      "WhiteLabelContractListMessageContract": {
+      "CommentContractListMessageContract": {
         "title": "MessageContract<List`1>",
         "type": "object",
         "additionalProperties": false,
@@ -1169,17 +1169,17 @@
             "$ref": "#/components/schemas/ErrorContract"
           },
           "result": {
-            "title": "List<WhiteLabelContract>",
+            "title": "List<CommentContract>",
             "type": "array",
             "nullable": true,
             "items": {
-              "$ref": "#/components/schemas/WhiteLabelContract"
+              "$ref": "#/components/schemas/CommentContract"
             }
           }
         }
       },
-      "WhiteLabelContractMessageContract": {
-        "title": "MessageContract<WhiteLabelContract>",
+      "CommentContractMessageContract": {
+        "title": "MessageContract<CommentContract>",
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -1190,7 +1190,7 @@
             "$ref": "#/components/schemas/ErrorContract"
           },
           "result": {
-            "$ref": "#/components/schemas/WhiteLabelContract"
+            "$ref": "#/components/schemas/CommentContract"
           }
         }
       }

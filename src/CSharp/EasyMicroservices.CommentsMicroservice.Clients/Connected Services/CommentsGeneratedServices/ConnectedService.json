@@ -5,7 +5,7 @@
     "Uri": "https://github.com/unchase/Unchase.OpenAPI.Connectedservice/"
   },
   "ExtendedData": {
-    "ServiceName": "WhiteLableGeneratedServices",
+    "ServiceName": "CommentGeneratedServices",
     "AcceptAllUntrustedCertificates": true,
     "GeneratedFileName": "OpenAPI",
     "Endpoint": "https://localhost:7184/swagger/v1/swagger.json",
@@ -59,7 +59,7 @@
       "WrapResponseMethods": [],
       "GenerateResponseClasses": true,
       "ResponseClass": "SwaggerResponse",
-      "Namespace": "WhiteLables.GeneratedServices",
+      "Namespace": "Comments.GeneratedServices",
       "RequiredPropertiesMustBeDefined": true,
       "DateType": "System.DateTimeOffset",
       "JsonConverters": [],
@@ -82,7 +82,7 @@
       "HandleReferences": false,
       "GenerateImmutableArrayProperties": false,
       "GenerateImmutableDictionaryProperties": false,
-      "JsonSerializerSettingsTransformationMethod": "new EasyMicroservices.WhiteLabelsMicroservice.Clients.MyJsonSerializerSettings",
+      "JsonSerializerSettingsTransformationMethod": "new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings",
       "InlineNamedArrays": false,
       "InlineNamedDictionaries": false,
       "InlineNamedTuples": true,

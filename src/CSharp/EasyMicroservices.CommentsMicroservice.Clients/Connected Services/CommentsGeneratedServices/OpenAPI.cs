@@ -14,7 +14,7 @@
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace WhiteLables.GeneratedServices
+namespace Comments.GeneratedServices
 {
     using System = global::System;
 
@@ -34,7 +34,7 @@ namespace WhiteLables.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.WhiteLabelsMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -561,7 +561,7 @@ namespace WhiteLables.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.WhiteLabelsMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -1088,7 +1088,7 @@ namespace WhiteLables.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.WhiteLabelsMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -1597,13 +1597,13 @@ namespace WhiteLables.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class WhiteLabelClient 
+    public partial class CommentClient 
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public WhiteLabelClient(string baseUrl, System.Net.Http.HttpClient httpClient)
+        public CommentClient(string baseUrl, System.Net.Http.HttpClient httpClient)
         {
             BaseUrl = baseUrl;
             _httpClient = httpClient;
@@ -1612,7 +1612,7 @@ namespace WhiteLables.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.WhiteLabelsMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -1633,7 +1633,7 @@ namespace WhiteLables.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WhiteLabelContractMessageContract> GetByIdAsync(long? id)
+        public virtual System.Threading.Tasks.Task<CommentContractMessageContract> GetByIdAsync(long? id)
         {
             return GetByIdAsync(id, System.Threading.CancellationToken.None);
         }
@@ -1641,10 +1641,10 @@ namespace WhiteLables.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WhiteLabelContractMessageContract> GetByIdAsync(long? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CommentContractMessageContract> GetByIdAsync(long? id, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WhiteLabel/GetById?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Comment/GetById?");
             if (id != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -1683,7 +1683,7 @@ namespace WhiteLables.GeneratedServices
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<WhiteLabelContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<CommentContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -1712,7 +1712,7 @@ namespace WhiteLables.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Int64MessageContract> AddAsync(WhiteLabelContract body)
+        public virtual System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CommentContract body)
         {
             return AddAsync(body, System.Threading.CancellationToken.None);
         }
@@ -1720,10 +1720,10 @@ namespace WhiteLables.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Int64MessageContract> AddAsync(WhiteLabelContract body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CommentContract body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WhiteLabel/Add");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Comment/Add");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1790,7 +1790,7 @@ namespace WhiteLables.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WhiteLabelContractMessageContract> UpdateAsync(WhiteLabelContract body)
+        public virtual System.Threading.Tasks.Task<CommentContractMessageContract> UpdateAsync(CommentContract body)
         {
             return UpdateAsync(body, System.Threading.CancellationToken.None);
         }
@@ -1798,10 +1798,10 @@ namespace WhiteLables.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WhiteLabelContractMessageContract> UpdateAsync(WhiteLabelContract body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CommentContractMessageContract> UpdateAsync(CommentContract body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WhiteLabel/Update");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Comment/Update");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1839,7 +1839,7 @@ namespace WhiteLables.GeneratedServices
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<WhiteLabelContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<CommentContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -1868,7 +1868,7 @@ namespace WhiteLables.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WhiteLabelContractMessageContract> HardDeleteByIdAsync(long? id)
+        public virtual System.Threading.Tasks.Task<CommentContractMessageContract> HardDeleteByIdAsync(long? id)
         {
             return HardDeleteByIdAsync(id, System.Threading.CancellationToken.None);
         }
@@ -1876,10 +1876,10 @@ namespace WhiteLables.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WhiteLabelContractMessageContract> HardDeleteByIdAsync(long? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CommentContractMessageContract> HardDeleteByIdAsync(long? id, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WhiteLabel/HardDeleteById?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Comment/HardDeleteById?");
             if (id != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -1919,7 +1919,7 @@ namespace WhiteLables.GeneratedServices
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<WhiteLabelContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<CommentContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -1948,7 +1948,7 @@ namespace WhiteLables.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WhiteLabelContractListMessageContract> GetAllAsync()
+        public virtual System.Threading.Tasks.Task<CommentContractListMessageContract> GetAllAsync()
         {
             return GetAllAsync(System.Threading.CancellationToken.None);
         }
@@ -1956,10 +1956,10 @@ namespace WhiteLables.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WhiteLabelContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<CommentContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/WhiteLabel/GetAll");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Comment/GetAll");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1993,7 +1993,7 @@ namespace WhiteLables.GeneratedServices
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<WhiteLabelContractListMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<CommentContractListMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -2968,7 +2968,7 @@ namespace WhiteLables.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class WhiteLabelContract : System.ComponentModel.INotifyPropertyChanged
+    public partial class CommentContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _id;
         private string _name;
@@ -3046,11 +3046,11 @@ namespace WhiteLables.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class WhiteLabelContractListMessageContract : System.ComponentModel.INotifyPropertyChanged
+    public partial class CommentContractListMessageContract : System.ComponentModel.INotifyPropertyChanged
     {
         private bool _isSuccess;
         private ErrorContract _error;
-        private System.Collections.Generic.ICollection<WhiteLabelContract> _result;
+        private System.Collections.Generic.ICollection<CommentContract> _result;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsSuccess
@@ -3083,7 +3083,7 @@ namespace WhiteLables.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<WhiteLabelContract> Result
+        public System.Collections.Generic.ICollection<CommentContract> Result
         {
             get { return _result; }
 
@@ -3108,11 +3108,11 @@ namespace WhiteLables.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class WhiteLabelContractMessageContract : System.ComponentModel.INotifyPropertyChanged
+    public partial class CommentContractMessageContract : System.ComponentModel.INotifyPropertyChanged
     {
         private bool _isSuccess;
         private ErrorContract _error;
-        private WhiteLabelContract _result;
+        private CommentContract _result;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsSuccess
@@ -3145,7 +3145,7 @@ namespace WhiteLables.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public WhiteLabelContract Result
+        public CommentContract Result
         {
             get { return _result; }
 

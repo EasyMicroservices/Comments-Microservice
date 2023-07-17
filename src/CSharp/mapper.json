@@ -1,9 +1,9 @@
 ﻿{
 	"Environments": [
 		{
-			"Name": "WhiteLablesMicroservice",
-			"GenerationPath": "ExecutionPath\\EasyMicroservices.WhiteLabelsMicroservice.Logics\\Mappers",
-			"BuildPath": "ExecutionPath\\EasyMicroservices.WhiteLabelsMicroservice.WebApi\\bin\\Debug\\net7.0",
+			"Name": "CommentsMicroservice",
+			"GenerationPath": "ExecutionPath\\EasyMicroservices.CommentesMicroservice.Logics\\Mappers",
+			"BuildPath": "ExecutionPath\\EasyMicroservices.CommentesMicroservice.WebApi\\bin\\Debug\\net7.0",
 			"NameSpaces": [
 				"EasyMicroservices.Mapper.Interfaces",
 				"EasyMicroservices.Mapper.CompileTimeMapper.Interfaces",
@@ -11,16 +11,16 @@
 			],
 			"Groups": [
 				{
-					"DisplayName": "WhiteLabelEntity_WhiteLabelContract",
+					"DisplayName": "CommentEntity_CommentContract",
 					"MapFrom": {
-						"Name": "WhiteLabelEntity",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Database.Entities",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Database.dll"
+						"Name": "CommentEntity",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
 					},
 					"MapTo": {
-						"Name": "WhiteLabelContract",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Contracts.Common",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Domain.dll"
+						"Name": "CommentContract",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
 					},
 					"SkippedProperties": [
 						{
@@ -36,13 +36,13 @@
 					"DisplayName": "MicroserviceContextTableEntity_MicroserviceContextTableContract",
 					"MapFrom": {
 						"Name": "MicroserviceContextTableEntity",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Database.Entities",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Database.dll"
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
 					},
 					"MapTo": {
 						"Name": "MicroserviceContextTableContract",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Contracts.Responses",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Domain.dll"
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Responses",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
 					},
 					"SkippedProperties": [
 						{
@@ -71,13 +71,13 @@
 					"DisplayName": "MicroserviceEntity_MicroserviceContract",
 					"MapFrom": {
 						"Name": "MicroserviceEntity",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Database.Entities",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Database.dll"
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
 					},
 					"MapTo": {
 						"Name": "MicroserviceContract",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Contracts.Common",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Domain.dll"
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
 					},
 					"SkippedProperties": [
 						{
@@ -92,13 +92,13 @@
 					"DisplayName": "ContextTableEntity_ContextTableContract",
 					"MapFrom": {
 						"Name": "ContextTableEntity",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Database.Entities",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Database.dll"
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
 					},
 					"MapTo": {
 						"Name": "ContextTableContract",
-						"Namespace": "EasyMicroservices.WhiteLabelsMicroservice.Contracts.Common",
-						"AssebmlyFileName": "EasyMicroservices.WhiteLabelsMicroservice.Domain.dll"
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
 					},
 					"SkippedProperties": [
 						{
