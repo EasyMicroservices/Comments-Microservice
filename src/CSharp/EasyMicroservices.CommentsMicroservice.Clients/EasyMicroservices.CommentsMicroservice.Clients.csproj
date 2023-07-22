@@ -5,10 +5,10 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.6</Version>
+    <Version>0.0.0.1</Version>
     <Description>client generated code.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>Label,microservice,Comment,tenant,tenants</PackageTags>
+    <PackageTags>microservice,comment,comments</PackageTags>
     <PackageProjectUrl>https://github.com/EasyMicroservices/Commentes-Microservice</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
