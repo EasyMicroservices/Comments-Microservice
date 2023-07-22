@@ -5,7 +5,7 @@
     "Uri": "https://github.com/unchase/Unchase.OpenAPI.Connectedservice/"
   },
   "ExtendedData": {
-    "ServiceName": "CommentGeneratedServices",
+    "ServiceName": "CommentsGeneratedServices",
     "AcceptAllUntrustedCertificates": true,
     "GeneratedFileName": "OpenAPI",
     "Endpoint": "https://localhost:7184/swagger/v1/swagger.json",
@@ -82,7 +82,7 @@
       "HandleReferences": false,
       "GenerateImmutableArrayProperties": false,
       "GenerateImmutableDictionaryProperties": false,
-      "JsonSerializerSettingsTransformationMethod": "new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings",
+      "JsonSerializerSettingsTransformationMethod": "new EasyMicroservices.CommentsMicroservice.Clients.MyJsonSerializerSettings",
       "InlineNamedArrays": false,
       "InlineNamedDictionaries": false,
       "InlineNamedTuples": true,
