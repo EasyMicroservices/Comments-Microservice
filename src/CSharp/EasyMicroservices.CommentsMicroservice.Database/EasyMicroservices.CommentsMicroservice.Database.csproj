@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>EasyMicroservices.CommentsMicroservice</RootNamespace>
   </PropertyGroup>
 
@@ -11,11 +11,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.2" />
-    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.9" />
-    <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
+	  <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.2" />
+	  <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.13" />
+	  <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.9" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
   </ItemGroup>
   
   <ItemGroup>

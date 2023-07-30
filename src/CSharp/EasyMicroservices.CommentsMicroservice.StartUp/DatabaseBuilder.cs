@@ -13,7 +13,7 @@ namespace EasyMicroservices.CommentsMicroservice
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseInMemoryDatabase("Comment");
-            optionsBuilder.UseSqlServer("Server=.;Database=Comments;Integrated Security=True;Trusted_Connection=True;   TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=.;Database=Comments;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True");
         }
     }
 }

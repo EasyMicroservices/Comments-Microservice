@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EasyMicroservices.Cores.Database.Interfaces;
+using EasyMicroservices.Cores.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.CommentMicroservice.Database.Schemas
 {
-    public class CommentSchema
+    public class CommentSchema : IUniqueIdentitySchema
     {
         public string Name { get; set; }
         public string Text { get; set; }
@@ -14,5 +16,6 @@ namespace EasyMicroservices.CommentMicroservice.Database.Schemas
         public string Website { get; set; }
         public DateTime CreationDateTime { get; set; }
         public DateTime ModifiationDateTime { get; set; }
+        public string UniqueIdentity { get; set; }
     }
 }

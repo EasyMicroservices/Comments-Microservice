@@ -1,7 +1,7 @@
 ﻿{
   "openapi": "3.0.1",
   "info": {
-    "title": "EasyMicroservices.CommentesMicroservice.WebApi",
+    "title": "EasyMicroservices.CommentsMicroservice.WebApi",
     "version": "1.0"
   },
   "paths": {
@@ -10,7 +10,7 @@
         "tags": [
           "Comment"
         ],
-        "operationId": "GetById4",
+        "operationId": "GetById",
         "parameters": [
           {
             "name": "id",
@@ -45,12 +45,61 @@
         }
       }
     },
+    "/api/Comment/GetByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "GetByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Comment/Add": {
       "post": {
         "tags": [
           "Comment"
         ],
-        "operationId": "Add4",
+        "operationId": "Add",
         "requestBody": {
           "content": {
             "application/json": {
@@ -99,7 +148,7 @@
         "tags": [
           "Comment"
         ],
-        "operationId": "Update4",
+        "operationId": "Update",
         "requestBody": {
           "content": {
             "application/json": {
@@ -144,11 +193,11 @@
       }
     },
     "/api/Comment/HardDeleteById": {
-      "post": {
+      "delete": {
         "tags": [
           "Comment"
         ],
-        "operationId": "HardDeleteById4",
+        "operationId": "HardDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -165,17 +214,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                  "$ref": "#/components/schemas/MessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                  "$ref": "#/components/schemas/MessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                  "$ref": "#/components/schemas/MessageContract"
                 }
               }
             }
@@ -188,7 +237,56 @@
         "tags": [
           "Comment"
         ],
-        "operationId": "GetAll4",
+        "operationId": "GetAll",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Comment/GetAllByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "GetAllByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -216,7 +314,7 @@
   },
   "components": {
     "schemas": {
-      "ContextTableContract": {
+      "CommentContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -224,17 +322,37 @@
             "type": "integer",
             "format": "int64"
           },
-          "tableName": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "contextName": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uniqueIdentity": {
             "type": "string",
             "nullable": true
           }
         }
       },
-      "ContextTableContractListMessageContract": {
+      "CommentContractListMessageContract": {
         "title": "MessageContract<List`1>",
         "type": "object",
         "additionalProperties": false,
@@ -246,17 +364,17 @@
             "$ref": "#/components/schemas/ErrorContract"
           },
           "result": {
-            "title": "List<ContextTableContract>",
+            "title": "List<CommentContract>",
             "type": "array",
             "nullable": true,
             "items": {
-              "$ref": "#/components/schemas/ContextTableContract"
+              "$ref": "#/components/schemas/CommentContract"
             }
           }
         }
       },
-      "ContextTableContractMessageContract": {
-        "title": "MessageContract<ContextTableContract>",
+      "CommentContractMessageContract": {
+        "title": "MessageContract<CommentContract>",
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -267,7 +385,7 @@
             "$ref": "#/components/schemas/ErrorContract"
           },
           "result": {
-            "$ref": "#/components/schemas/ContextTableContract"
+            "$ref": "#/components/schemas/CommentContract"
           }
         }
       },
@@ -338,6 +456,16 @@
           14
         ]
       },
+      "GetUniqueIdentityRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "Int64MessageContract": {
         "title": "MessageContract<Int64>",
         "type": "object",
@@ -355,34 +483,7 @@
           }
         }
       },
-      "MicroserviceContextTableContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "microserviceName": {
-            "type": "string",
-            "nullable": true
-          },
-          "microserviceId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "contextName": {
-            "type": "string",
-            "nullable": true
-          },
-          "tableName": {
-            "type": "string",
-            "nullable": true
-          },
-          "contextTableId": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
-      "MicroserviceContextTableContractListMessageContract": {
-        "title": "MessageContract<List`1>",
+      "MessageContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -391,93 +492,6 @@
           },
           "error": {
             "$ref": "#/components/schemas/ErrorContract"
-          },
-          "result": {
-            "title": "List<MicroserviceContextTableContract>",
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/MicroserviceContextTableContract"
-            }
-          }
-        }
-      },
-      "MicroserviceContextTableContractMessageContract": {
-        "title": "MessageContract<MicroserviceContextTableContract>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "result": {
-            "$ref": "#/components/schemas/MicroserviceContextTableContract"
-          }
-        }
-      },
-      "MicroserviceContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "instanceIndex": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "serverDestinationAddress": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "MicroserviceContractListMessageContract": {
-        "title": "MessageContract<List`1>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "result": {
-            "title": "List<MicroserviceContract>",
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/MicroserviceContract"
-            }
-          }
-        }
-      },
-      "MicroserviceContractMessageContract": {
-        "title": "MessageContract<MicroserviceContract>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "result": {
-            "$ref": "#/components/schemas/MicroserviceContract"
           }
         }
       },
@@ -488,67 +502,6 @@
           "message": {
             "type": "string",
             "nullable": true
-          }
-        }
-      },
-      "CommentContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "parentId": {
-            "title": "Nullable<Int64>",
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          }
-        }
-      },
-      "CommentContractListMessageContract": {
-        "title": "MessageContract<List`1>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "result": {
-            "title": "List<CommentContract>",
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/CommentContract"
-            }
-          }
-        }
-      },
-      "CommentContractMessageContract": {
-        "title": "MessageContract<CommentContract>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "result": {
-            "$ref": "#/components/schemas/CommentContract"
           }
         }
       }
