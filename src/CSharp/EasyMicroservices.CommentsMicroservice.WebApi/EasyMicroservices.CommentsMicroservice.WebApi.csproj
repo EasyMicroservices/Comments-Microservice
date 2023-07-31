@@ -8,7 +8,6 @@
   <ItemGroup>
     <PackageReference Include="EasyMicroservices.Cores.AspCoreApi" Version="0.0.0.12" />
     <PackageReference Include="EasyMicroservices.ServiceContracts" Version="0.0.0.4" />
-    <PackageReference Include="Elmah.MVC" Version="2.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
