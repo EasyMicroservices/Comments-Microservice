@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
-      "url": "https://localhost:5009/swagger/v1/swagger.json",
+      "url": "https://localhost:7183/swagger/v1/swagger.json",
       "output": "OpenAPI.nswag.json",
       "newLineBehavior": "Auto"
     }
@@ -78,7 +78,7 @@
       "handleReferences": false,
       "generateImmutableArrayProperties": false,
       "generateImmutableDictionaryProperties": false,
-      "jsonSerializerSettingsTransformationMethod": "new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings",
+      "jsonSerializerSettingsTransformationMethod": "new EasyMicroservices.CommentsMicroservice.Clients.MyJsonSerializerSettings",
       "inlineNamedArrays": false,
       "inlineNamedDictionaries": false,
       "inlineNamedTuples": true,

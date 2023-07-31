@@ -1,7 +1,7 @@
 using EasyMicroservices.Laboratory.Engine;
 using EasyMicroservices.Laboratory.Engine.Net.Http;
 
-namespace EasyMicroservices.CommentesMicroservice.Clients.Tests
+namespace EasyMicroservices.CommentsMicroservice.Clients.Tests
 {
     public class MicroserviceClientTest
     {

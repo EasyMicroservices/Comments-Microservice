@@ -9,10 +9,10 @@
     <Description>client generated code.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>Label,microservice,Comment,tenant,tenants</PackageTags>
-    <PackageProjectUrl>https://github.com/EasyMicroservices/Commentes-Microservice</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/Comments-Microservice</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.CommentesMicroservice.Clients.xml</DocumentationFile>
+    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.CommentsMicroservice.Clients.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -34,7 +34,7 @@ namespace Comments.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.CommentesMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.CommentsMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
