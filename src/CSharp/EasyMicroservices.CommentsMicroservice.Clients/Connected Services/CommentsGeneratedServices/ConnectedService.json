@@ -8,7 +8,7 @@
     "ServiceName": "CommentsGeneratedServices",
     "AcceptAllUntrustedCertificates": true,
     "GeneratedFileName": "OpenAPI",
-    "Endpoint": "https://localhost:7184/swagger/v1/swagger.json",
+    "Endpoint": "https://localhost:7183/swagger/v1/swagger.json",
     "GeneratedFileNamePrefix": null,
     "GenerateCSharpClient": true,
     "GenerateTypeScriptClient": false,

@@ -45,6 +45,55 @@
         }
       }
     },
+    "/api/Comment/GetByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "GetByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Comment/Add": {
       "post": {
         "tags": [
@@ -144,7 +193,7 @@
       }
     },
     "/api/Comment/HardDeleteById": {
-      "post": {
+      "delete": {
         "tags": [
           "Comment"
         ],
@@ -212,6 +261,55 @@
           }
         }
       }
+    },
+    "/api/Comment/GetAllByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "operationId": "GetAllByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -247,6 +345,10 @@
           "modifiationDateTime": {
             "type": "string",
             "format": "date-time"
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -353,6 +455,16 @@
           13,
           14
         ]
+      },
+      "GetUniqueIdentityRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
       },
       "Int64MessageContract": {
         "title": "MessageContract<Int64>",

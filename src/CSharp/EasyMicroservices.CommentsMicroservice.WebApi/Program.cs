@@ -1,25 +1,32 @@
-using EasyMicroservices.Mapper.CompileTimeMapper.Providers;
-using EasyMicroservices.Mapper.SerializerMapper.Providers;
-using EasyMicroservices.Serialization.Newtonsoft.Json.Providers;
-using EasyMicroservices.CommentsMicroservice.Contracts.Common;
-//using EasyMicroservices.CommentsMicroservice.Contracts.Responses;
 using EasyMicroservices.CommentsMicroservice.Database;
 using EasyMicroservices.CommentsMicroservice.Database.Contexts;
-using EasyMicroservices.CommentsMicroservice.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using EasyMicroservices.CommentsMicroservice.Database.Entities;
+using EasyMicroservices.CommentsMicroservice.Contracts;
+using EasyMicroservices.CommentsMicroservice.Interfaces;
+using EasyMicroservices.CommentsMicroservice.Database;
+using EasyMicroservices.CommentsMicroservice.Interfaces;
+using EasyMicroservices.CommentsMicroservice;
+using EasyMicroservices.CommentsMicroservice.Contracts.Common;
 
 namespace EasyMicroservices.CommentsMicroservice.WebApi
 {
     public class Program
     {
+
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
 
             // Add services to the container.
             //builder.Services.AddAuthorization();
@@ -32,11 +39,25 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
                 options.SchemaFilter<XEnumNamesSchemaFilter>();
             });
 
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, CommentContract, CommentContract, CommentContract>());
+            builder.Services.AddDbContext<CommentContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
+            );
 
+            //builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
+            string webRootPath = @Directory.GetCurrentDirectory();
 
             builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, CommentContract, CommentContract, CommentContract>());
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
+   
+            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
+            builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
+            builder.Services.AddTransient(serviceProvider => new CommentContext(serviceProvider.GetService<IDatabaseBuilder>()));
+            //builder.Services.AddScoped<IFileManagerProvider>(serviceProvider => new FileManagerProvider());
+            //builder.Services.AddScoped<IDirectoryManagerProvider, kc>();
+
+            //builder.Services.AddScoped<IDirectoryManagerProvider>(serviceProvider => new FileManager());
+            //builder.Services.AddScoped<IFileManagerProvider>();
 
             var app = builder.Build();
             app.UseDeveloperExceptionPage();
@@ -48,18 +69,24 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             app.UseAuthorization();
             app.MapControllers();
 
-            //var context = new CommentContext(new DatabaseBuilder());
-            //await context.Database.MigrateAsync();
-            //await context.DisposeAsync();
 
-            //var items = context.MicroserviceContextTables.ToList();
             //CreateDatabase();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                using var context = scope.ServiceProvider.GetService<CommentContext>();
+                await context.Database.EnsureCreatedAsync();
+                //await context.Database.MigrateAsync();
+                await context.DisposeAsync();
+                var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
+                await service.Initialize("Comment", "https://localhost:7184", typeof(CommentContext));
+            }
 
             StartUp startUp = new StartUp();
             await startUp.Run(new DependencyManager());
             app.Run();
         }
-
+        
         static void CreateDatabase()
         {
             using (var context = new CommentContext(new DatabaseBuilder()))

@@ -15,5 +15,7 @@ namespace EasyMicroservices.CommentsMicroservice.Contracts.Common
         public string Website { get; set; }
         public DateTime CreationDateTime { get; set; }
         public DateTime ModifiationDateTime { get; set; }
+        public string UniqueIdentity { get; set; }
+
     }
 }

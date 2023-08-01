@@ -24,6 +24,7 @@ namespace CompileTimeMapper
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
                 ModifiationDateTime = fromObject.ModifiationDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -39,6 +40,9 @@ namespace CompileTimeMapper
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
                 ModifiationDateTime = fromObject.ModifiationDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity,
+
+
             };
             return mapped;
         }
@@ -55,6 +59,9 @@ namespace CompileTimeMapper
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
                 ModifiationDateTime = fromObject.ModifiationDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity,
+
+
             };
             return mapped;
         }
@@ -71,6 +78,8 @@ namespace CompileTimeMapper
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
                 ModifiationDateTime = fromObject.ModifiationDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity,
+
             };
             return mapped;
         }

@@ -1,5 +1,6 @@
 ﻿using EasyMicroservices.CommentMicroservice.Database.Schemas;
 using EasyMicroservices.Cores.Database.Interfaces;
+using EasyMicroservices.Cores.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

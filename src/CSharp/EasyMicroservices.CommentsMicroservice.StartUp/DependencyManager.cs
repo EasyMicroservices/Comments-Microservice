@@ -1,19 +1,19 @@
-﻿using EasyMicroservices.Configuration.Interfaces;
+﻿using EasyMicroservices.CommentsMicroservice.Interfaces;
+using EasyMicroservices.CommentsMicroservice;
+using EasyMicroservices.Configuration.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.Cores.Database.Logics;
 using EasyMicroservices.Cores.Database.Managers;
+using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.Database.EntityFrameworkCore.Providers;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Providers;
 using EasyMicroservices.Mapper.Interfaces;
-using EasyMicroservices.Mapper.SerializerMapper.Providers;
-using EasyMicroservices.Serialization.Newtonsoft.Json.Providers;
 using EasyMicroservices.CommentsMicroservice.Database.Contexts;
 using EasyMicroservices.CommentsMicroservice.Interfaces;
 using System;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.CommentsMicroservice
 {
@@ -28,22 +28,7 @@ namespace EasyMicroservices.CommentsMicroservice
             where TEntity : class, IIdSchema<long>
             where TResponseContract : class
         {
-            return new LongIdMappedDatabaseLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(
-                GetDatabase().GetReadableOf<TEntity>(),
-                GetDatabase().GetWritableOf<TEntity>(),
-                GetMapper(),
-                new DefaultUniqueIdentityManager());
-        }
-
-        public virtual IContractLogic<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract, TResponseContract> GetManyToManyContractLogic<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>()
-            where TEntity : class
-            where TResponseContract : class
-        {
-            return new DatabaseMappedLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(
-                GetDatabase().GetReadableOf<TEntity>(),
-                GetDatabase().GetWritableOf<TEntity>(),
-                GetMapper(),
-                new DefaultUniqueIdentityManager());
+            return new LongIdMappedDatabaseLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(GetDatabase().GetReadableOf<TEntity>(), GetDatabase().GetWritableOf<TEntity>(), GetMapper(), GetUniqueIdentityManager());
         }
 
         public virtual IDatabase GetDatabase()
@@ -51,13 +36,19 @@ namespace EasyMicroservices.CommentsMicroservice
             return new EntityFrameworkCoreDatabaseProvider(new CommentContext(new DatabaseBuilder()));
         }
 
+        public static string DefaultUniqueIdentity { get; set; }
+        public static long MicroserviceId { get; set; }
+        public static IUniqueIdentityManager UniqueIdentityManager { get; set; }
+        public virtual IUniqueIdentityManager GetUniqueIdentityManager()
+        {
+            if (UniqueIdentityManager == null)
+                UniqueIdentityManager = new DefaultUniqueIdentityManager(DefaultUniqueIdentity, MicroserviceId);
+            return UniqueIdentityManager;
+        }
+
         public virtual IMapperProvider GetMapper()
         {
-            var mapper = new CompileTimeMapperProvider(new SerializerMapperProvider(new NewtonsoftJsonProvider(new Newtonsoft.Json.JsonSerializerSettings
-            {
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
-                PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All
-            })));
+            var mapper = new CompileTimeMapperProvider();
             foreach (var type in typeof(IDependencyManager).Assembly.GetTypes())
             {
                 if (typeof(IMapper).IsAssignableFrom(type))
@@ -70,5 +61,4 @@ namespace EasyMicroservices.CommentsMicroservice
             return mapper;
         }
     }
-
 }
