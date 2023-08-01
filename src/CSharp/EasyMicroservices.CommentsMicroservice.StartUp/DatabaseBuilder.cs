@@ -1,5 +1,6 @@
 ﻿using EasyMicroservices.CommentsMicroservice.Database;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,14 @@ namespace EasyMicroservices.CommentsMicroservice
 {
     public class DatabaseBuilder : IDatabaseBuilder
     {
+        readonly IConfiguration config = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .Build();
+
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseInMemoryDatabase("Comment");
-            optionsBuilder.UseSqlServer("Server=.;Database=Comments;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True");
+            //optionsBuilder.UseInMemoryDatabase("Storage database");
+            optionsBuilder.UseSqlServer(config.GetConnectionString("local"));
         }
     }
 }
