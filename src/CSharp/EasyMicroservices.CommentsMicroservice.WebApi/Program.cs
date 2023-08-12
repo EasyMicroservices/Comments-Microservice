@@ -70,16 +70,16 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             app.MapControllers();
 
 
-            CreateDatabase();
+            //CreateDatabase();
 
             using (var scope = app.Services.CreateScope())
             {
                 using var context = scope.ServiceProvider.GetService<CommentContext>();
-                await context.Database.EnsureCreatedAsync();
-                await context.Database.MigrateAsync();
+                //await context.Database.EnsureCreatedAsync();
+                //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
-                await service.Initialize("Comment", "https://localhost:7184", typeof(CommentContext));
+                await service.Initialize("Comment", config.GetValue<string>("RootAddresses:WhiteLabel"), typeof(CommentContext));
             }
 
             StartUp startUp = new StartUp();

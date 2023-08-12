@@ -18,13 +18,16 @@ namespace CompileTimeMapper
                 return default;
             var mapped = new global::EasyMicroservices.CommentsMicroservice.Database.Entities.CommentEntity()
             {
+                Id = fromObject.Id,
                 Name = fromObject.Name,
                 Text = fromObject.Text,
                 Email = fromObject.Email,
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
-                ModifiationDateTime = fromObject.ModifiationDateTime,
-                UniqueIdentity = fromObject.UniqueIdentity,
+                ModificationDateTime = fromObject.ModificationDateTime,
+                IsDeleted = fromObject.IsDeleted,
+                DeletedDateTime = fromObject.DeletedDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity
             };
             return mapped;
         }
@@ -34,15 +37,16 @@ namespace CompileTimeMapper
                 return default;
             var mapped = new global::EasyMicroservices.CommentsMicroservice.Contracts.Common.CommentContract()
             {
+                Id = fromObject.Id,
                 Name = fromObject.Name,
                 Text = fromObject.Text,
                 Email = fromObject.Email,
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
-                ModifiationDateTime = fromObject.ModifiationDateTime,
-                UniqueIdentity = fromObject.UniqueIdentity,
-
-
+                ModificationDateTime = fromObject.ModificationDateTime,
+                IsDeleted = fromObject.IsDeleted,
+                DeletedDateTime = fromObject.DeletedDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity
             };
             return mapped;
         }
@@ -58,10 +62,10 @@ namespace CompileTimeMapper
                 Email = fromObject.Email,
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
-                ModifiationDateTime = fromObject.ModifiationDateTime,
-                UniqueIdentity = fromObject.UniqueIdentity,
-
-
+                ModificationDateTime = fromObject.ModificationDateTime,
+                IsDeleted = fromObject.IsDeleted,
+                DeletedDateTime = fromObject.DeletedDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity
             };
             return mapped;
         }
@@ -77,8 +81,10 @@ namespace CompileTimeMapper
                 Email = fromObject.Email,
                 Website = fromObject.Website,
                 CreationDateTime = fromObject.CreationDateTime,
-                ModifiationDateTime = fromObject.ModifiationDateTime,
-                UniqueIdentity = fromObject.UniqueIdentity,
+                ModificationDateTime = fromObject.ModificationDateTime,
+                IsDeleted = fromObject.IsDeleted,
+                DeletedDateTime = fromObject.DeletedDateTime,
+                UniqueIdentity = fromObject.UniqueIdentity
 
             };
             return mapped;
