@@ -1,9 +1,10 @@
 ﻿using EasyMicroservices.CommentsMicroservice.Database.Entities;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.CommentsMicroservice.Database.Contexts
 {
-    public class CommentContext : DbContext
+    public class CommentContext : RelationalCoreContext
     {
         IDatabaseBuilder _builder;
         public CommentContext(IDatabaseBuilder builder)

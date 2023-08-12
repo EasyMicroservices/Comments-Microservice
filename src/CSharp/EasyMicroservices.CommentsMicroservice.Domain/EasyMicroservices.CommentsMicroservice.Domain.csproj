@@ -11,4 +11,8 @@
     <Folder Include="DataTypes\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.15" />
+  </ItemGroup>
+
 </Project>
