@@ -113,17 +113,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CommentContract"
+                "$ref": "#/components/schemas/AddCommentContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CommentContract"
+                "$ref": "#/components/schemas/AddCommentContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CommentContract"
+                "$ref": "#/components/schemas/AddCommentContract"
               }
             }
           }
@@ -162,17 +162,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CommentContract"
+                "$ref": "#/components/schemas/UpdateCommentContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CommentContract"
+                "$ref": "#/components/schemas/UpdateCommentContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CommentContract"
+                "$ref": "#/components/schemas/UpdateCommentContract"
               }
             }
           }
@@ -381,6 +381,38 @@
   },
   "components": {
     "schemas": {
+      "AddCommentContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "parentId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "CommentContract": {
         "type": "object",
         "additionalProperties": false,
@@ -388,6 +420,12 @@
           "id": {
             "type": "integer",
             "format": "int64"
+          },
+          "parentId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
           },
           "name": {
             "type": "string",
@@ -614,6 +652,42 @@
           },
           "error": {
             "$ref": "#/components/schemas/ErrorContract"
+          }
+        }
+      },
+      "UpdateCommentContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "parentId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
