@@ -14,6 +14,7 @@ using EasyMicroservices.CommentsMicroservice.Database;
 using EasyMicroservices.CommentsMicroservice.Interfaces;
 using EasyMicroservices.CommentsMicroservice;
 using EasyMicroservices.CommentsMicroservice.Contracts.Common;
+using EasyMicroservices.CommentsMicroservice.Contracts.Requests;
 
 namespace EasyMicroservices.CommentsMicroservice.WebApi
 {
@@ -47,7 +48,7 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             string webRootPath = @Directory.GetCurrentDirectory();
 
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, CommentContract, CommentContract, CommentContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract>());
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
    
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());

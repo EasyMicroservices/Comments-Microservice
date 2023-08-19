@@ -11,6 +11,7 @@ namespace EasyMicroservices.CommentsMicroservice.Database.Entities
 {
     public class CommentEntity : CommentSchema, IIdSchema<long>
     {
+        public long? ParentId { get; set; }
         public long Id { get; set; }
     }
 }
