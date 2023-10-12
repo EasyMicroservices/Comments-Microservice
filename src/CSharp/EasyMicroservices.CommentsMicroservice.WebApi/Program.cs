@@ -15,6 +15,7 @@ using EasyMicroservices.CommentsMicroservice.Interfaces;
 using EasyMicroservices.CommentsMicroservice;
 using EasyMicroservices.CommentsMicroservice.Contracts.Common;
 using EasyMicroservices.CommentsMicroservice.Contracts.Requests;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 
 namespace EasyMicroservices.CommentsMicroservice.WebApi
 {
@@ -49,16 +50,14 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
 
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract>());
-            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
-   
-            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
-            builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
-            builder.Services.AddTransient(serviceProvider => new CommentContext(serviceProvider.GetService<IDatabaseBuilder>()));
-            //builder.Services.AddScoped<IFileManagerProvider>(serviceProvider => new FileManagerProvider());
-            //builder.Services.AddScoped<IDirectoryManagerProvider, kc>();
 
-            //builder.Services.AddScoped<IDirectoryManagerProvider>(serviceProvider => new FileManager());
-            //builder.Services.AddScoped<IFileManagerProvider>();
+            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
+            builder.Services.AddScoped(serviceProvider => new WhiteLabelManager(serviceProvider, serviceProvider.GetService<IDependencyManager>()));
+
+            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
+            builder.Services.AddTransient(serviceProvider => new CommentContext(serviceProvider.GetService<IDatabaseBuilder>()));
+            builder.Services.AddTransient<RelationalCoreContext>(serviceProvider => serviceProvider.GetService<CommentContext>());
+
 
             var app = builder.Build();
             app.UseDeveloperExceptionPage();
@@ -76,7 +75,7 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             using (var scope = app.Services.CreateScope())
             {
                 using var context = scope.ServiceProvider.GetService<CommentContext>();
-                //await context.Database.EnsureCreatedAsync();
+                await context.Database.EnsureCreatedAsync();
                 //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
