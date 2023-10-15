@@ -11,14 +11,16 @@ namespace EasyMicroservices.CommentsMicroservice
 {
     public class DatabaseBuilder : IDatabaseBuilder
     {
-        readonly IConfiguration config = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-        .Build();
+        IConfiguration _configuration;
+        public DatabaseBuilder(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseInMemoryDatabase("CommentDatabase");
-            optionsBuilder.UseSqlServer(config.GetConnectionString("local"));
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("local"));
         }
     }
 }
