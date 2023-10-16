@@ -51,7 +51,7 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract>());
 
-            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
+            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder(config));
             builder.Services.AddScoped(serviceProvider => new WhiteLabelManager(serviceProvider, serviceProvider.GetService<IDependencyManager>()));
 
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
@@ -89,7 +89,11 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
         
         static void CreateDatabase()
         {
-            using (var context = new CommentContext(new DatabaseBuilder()))
+            IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
+            using (var context = new CommentContext(new DatabaseBuilder(config)))
             {
                 if (context.Database.EnsureCreated())
                 {

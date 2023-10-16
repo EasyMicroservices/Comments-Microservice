@@ -14,6 +14,7 @@ using EasyMicroservices.CommentsMicroservice.Database.Contexts;
 using EasyMicroservices.CommentsMicroservice.Interfaces;
 using System;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace EasyMicroservices.CommentsMicroservice
 {
@@ -33,7 +34,11 @@ namespace EasyMicroservices.CommentsMicroservice
 
         public virtual IDatabase GetDatabase()
         {
-            return new EntityFrameworkCoreDatabaseProvider(new CommentContext(new DatabaseBuilder()));
+            IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
+            return new EntityFrameworkCoreDatabaseProvider(new CommentContext(new DatabaseBuilder(config)));
         }
 
         public static string DefaultUniqueIdentity { get; set; }
