@@ -6,16 +6,21 @@ using EasyMicroservices.CommentsMicroservice.Contracts.Requests;
 using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.Cores.Contracts.Requests;
 using System.Collections.Immutable;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 
 namespace EasyMicroservices.CommentsMicroservice.WebApi.Controllers
 {
     public class CommentController : SimpleQueryServiceController<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long>
     {
         private readonly IContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long> _contractlogic;
-        public CommentController(IContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long> contractLogic) : base(contractLogic)
+        public IUnitOfWork _uow;
+
+        public CommentController(IUnitOfWork uow) : base(uow)
         {
-            _contractlogic = contractLogic;
+            _uow = uow;
+            _contractlogic = uow.GetContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long>();
         }
+
         public override async Task<MessageContract> SoftDeleteById(SoftDeleteRequestContract<long> request, CancellationToken cancellationToken = default)
         {
             var childComments = await _contractlogic.GetAll(query => query.Where(x => x.ParentId == request.Id));

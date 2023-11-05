@@ -1,15 +1,15 @@
 ﻿using EasyMicroservices.CommentsMicroservice.Database.Entities;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.CommentsMicroservice.Database.Contexts
 {
     public class CommentContext : RelationalCoreContext
     {
-        IDatabaseBuilder _builder;
-        public CommentContext(IDatabaseBuilder builder)
+        IEntityFrameworkCoreDatabaseBuilder _builder;
+        public CommentContext(IEntityFrameworkCoreDatabaseBuilder builder) : base(builder)
         {
-            _builder = builder;
         }
 
         public DbSet<CommentEntity> Comments { get; set; }
