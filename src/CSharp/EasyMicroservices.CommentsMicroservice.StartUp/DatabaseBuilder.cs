@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.CommentsMicroservice.Database;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.CommentsMicroservice
 {
-    public class DatabaseBuilder : IDatabaseBuilder
+    public class DatabaseBuilder : IEntityFrameworkCoreDatabaseBuilder
     {
         IConfiguration _configuration;
         public DatabaseBuilder(IConfiguration configuration)
@@ -19,8 +20,8 @@ namespace EasyMicroservices.CommentsMicroservice
 
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseInMemoryDatabase("CommentDatabase");
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("local"));
+            optionsBuilder.UseInMemoryDatabase("CommentDatabase");
+            //optionsBuilder.UseSqlServer(_configuration.GetConnectionString("local"));
         }
     }
 }
