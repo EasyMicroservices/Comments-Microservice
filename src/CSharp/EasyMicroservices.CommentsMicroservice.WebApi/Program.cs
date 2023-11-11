@@ -10,7 +10,7 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
         public static async Task Main(string[] args)
         {
             var app = CreateBuilder(args);
-            var build = await app.Build<CommentContext>();
+            var build = await app.Build<CommentContext>(true);
             build.MapControllers();
             build.Run();
         }
