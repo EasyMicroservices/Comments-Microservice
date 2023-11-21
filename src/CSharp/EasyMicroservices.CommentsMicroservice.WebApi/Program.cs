@@ -22,7 +22,7 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             app.Services.AddTransient((serviceProvider) => new UnitOfWork(serviceProvider));
             app.Services.AddTransient(serviceProvider => new CommentContext(serviceProvider.GetService<IEntityFrameworkCoreDatabaseBuilder>()));
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
-            StartUpExtensions.AddWhiteLabel("Questions", "RootAddresses:WhiteLabel");
+            StartUpExtensions.AddWhiteLabel("Comments", "RootAddresses:WhiteLabel");
             return app;
         }
 
