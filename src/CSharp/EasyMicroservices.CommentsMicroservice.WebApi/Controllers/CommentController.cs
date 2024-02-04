@@ -12,34 +12,33 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi.Controllers
 {
     public class CommentController : SimpleQueryServiceController<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long>
     {
-        private readonly IContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long> _contractlogic;
         public IUnitOfWork _uow;
 
         public CommentController(IUnitOfWork uow) : base(uow)
         {
             _uow = uow;
-            _contractlogic = uow.GetContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long>();
         }
 
         public override async Task<MessageContract> SoftDeleteById(SoftDeleteRequestContract<long> request, CancellationToken cancellationToken = default)
         {
-            var childComments = await _contractlogic.GetAll(query => query.Where(x => x.ParentId == request.Id));
-            var commentId = childComments.Result.Select(x => x.Id).ToList();
-            var deleteParentComment = await _contractlogic.SoftDeleteById(new SoftDeleteRequestContract<long>
+            var logic = _uow.GetContractLogic<CommentEntity, AddCommentContract, UpdateCommentContract, CommentContract, long>();
+
+            var childComments = await logic.GetAll(query => query.Where(x => x.ParentId == request.Id), cancellationToken);
+            var commentIds = childComments.Result.Select(x => x.Id).ToList();
+
+            var deleteParentComment = await logic.SoftDeleteById(new SoftDeleteRequestContract<long>
             {
                 Id = request.Id,
                 IsDelete = true
             }, cancellationToken);
-            if (deleteParentComment.IsSuccess)
+
+            await logic.SoftDeleteBulkByIds(new SoftDeleteBulkRequestContract<long>
             {
-                await _contractlogic.SoftDeleteBulkByIds(new SoftDeleteBulkRequestContract<long>
-                {
-                    Ids = commentId,
-                    IsDelete = true
-                });
+                Ids = commentIds,
+                IsDelete = true
+            }, cancellationToken);
+
             return deleteParentComment;
-            }
-            return (FailedReasonType.Incorrect, "An error has occurred");
         }
     }
 }
